@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Player Rankings</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="mD_stats.css" type="text/css">
+<meta name="generator" content="Namo WebEditor v5.0(Trial)">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table border="0" width="100%" cellpadding="0" cellspacing="0" style="background-position:200 0%; background-position:200 0%;" bgcolor="white">
+  <tr>
+  <td width="448" align="left" height="243" nowrap rowspan="2" valign="bottom">
+  <div align="right">
+    <p><img src="Images/title.gif" width="508" height="163" border="0"></p>
+  </div>
+  </td>
+<td width="559" align="left" valign="bottom" height="175" bgcolor="white">
+  <table border="0" width="487" align="center">
+  <tr>
+    <td nowrap valign="middle" width="177" height="10" align="right"><b><font color="black">Server Name</font></b><font color="black">:</font> </td>
+    <td width="300" height="10" align="left" valign="middle"><a class="plrlink" href="$webpage"><b><font color="black">$server.name</font></b></a></td>
+  </tr>
+  <tr>
+    <td nowrap valign="middle" width="177" align="right"><font color="black">Server IP:</font> </td>
+    <td width="300" align="left" valign="top"><font color="black">$server.ip</font></td>
+  </tr>
+  <tr>
+    <td nowrap valign="middle" width="177" align="right"><b><font color="black">Admin</font></b><font color="black">:</font> </td>
+    <td width="300" align="left" valign="middle"><a class="plrlink" href="mailto:$admin.email"><b><font color="black">$admin.name</font></b></a></td>
+  </tr>
+  <tr>
+    <td nowrap valign="middle" width="177" align="right"><font color="black">Stats Updated:</font> </td>
+    <td width="300" align="left" valign="middle"><font color="black">$timedate</font> </td>
+  </tr>
+  <tr>
+    <td nowrap valign="middle" width="177" align="right" height="7">
+    <p><font color="black"><b>Time Frame For Stats</b>:</font></p>
+ </td>
+   <td width="300" align="left" valign="middle" height="7">
+   <p><font color="black"><b>Not Completed!</b></font></p>
+ </td></tr>
+ </table>
+ </td></tr>
+ <tr>
+    <td width="559" valign="bottom" height="68" background="Images/title2.jpg"><p>&nbsp;</p>
+ </td>
+ </tr>
+</table>
+<table cellpadding="0" cellspacing="0" align="center" bgcolor="#142234">
+  <tr class="listhead" align="center">
+    <td width="267" height="20" align="center" valign="middle" bgcolor="#142234"><p>&nbsp;</p>
+    </td>
+  </tr>
+</table>
+<table width="98%" cellpadding="0" cellspacing="0" align="center">
+  <tr class="listhead" align="center">
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><a class="plrlink" href="index.html"><b><i>Player Ranks</i></b></a></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><a class="plrlink" href="weapon.html"><b><i>Weapon Ranks</i></b></a></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><b><i>Map Statistics</i></b></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><b><i>Clan Statistics</i></b></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><p><b><i>Server Statistics</i></b></p></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><p><b><i>&nbsp;Server Chat</i></b></p></td>
+    <td height="20" align="center" valign="middle" bgcolor="#142234"><p><b><i>Kicked/Banned</i></b></p></td>
+  </tr>
+</table>
+<br>
+  <table width="98%" border="0" cellpadding="0" cellspacing="0" align="center">
+    <tr valign="bottom">
+	  <td align="center"><font size="+2">T</font><font size="+1">OP</font><font size="+2"> $maxrank R</font><font size="+1">ANKED </font><font size="+2">P</font><font size="+1">LAYERS
+	  </font><font size="+2">F</font><font size="+1">OR </font><font size="+2">$servername</font></td>
+    </tr>
+    <tr><td height="5" align="center"><img src="images\line-blue.jpg" width="761" height="6"></td></tr>
+    <tr><td height="17"><p>&nbsp;</p></td></tr>
+  </table>
+  <table width="98%" border="0" cellpadding="1" cellspacing="1" class="row1" align="center">
+	<tr class="plrgenrow1" align="center">
+	<td nowrap width="37" class="listhead"><b>Rank</b></td>
+	<td width="196" align="left" class="listhead">&nbsp;<img src="Images/player.gif" width="17" height="17" border="0"> Name</td>
+	<td nowrap width="86" class="selhead"><b>Kills</b></td>
+	<td nowrap width="86" class="listhead">Dmg Delt</td>
+	<td nowrap width="86" class="listhead"><b>Deaths</b> </td>
+	<td nowrap width="91" class="listhead">Dmg Took</td>
+	<td nowrap width="83" class="listhead"><b>Sui's</b> </td>
+	<td nowrap width="73" class="listhead">Dmg Bled</td>
+	<td nowrap width="102" class="listhead"> <b>Efficiency</b></td>
+	<td nowrap width="110" class="listhead">K:D</td>
+  </tr>
+  </table>

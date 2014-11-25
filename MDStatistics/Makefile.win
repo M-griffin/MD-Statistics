@@ -1,0 +1,68 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.7.9
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = Project1_private.res
+OBJ  = config.o FA26.o Html1.o Html2.o LogFunc.o Mapfunc.o Maps.o PlayerFunc.o Stats.o WeaponFunc.o wincon.o ansi.o main.o $(RES)
+LINKOBJ  = config.o FA26.o Html1.o Html2.o LogFunc.o Mapfunc.o Maps.o PlayerFunc.o Stats.o WeaponFunc.o wincon.o ansi.o main.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" 
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/include/c++"  -I"C:/Dev-Cpp/include" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS) 
+CFLAGS = $(INCS) 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(LINKOBJ)
+	$(CPP) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+config.o: config.cpp
+	$(CPP) -c config.cpp -o config.o $(CXXFLAGS)
+
+FA26.o: FA26.cpp
+	$(CPP) -c FA26.cpp -o FA26.o $(CXXFLAGS)
+
+Html1.o: Html1.cpp
+	$(CPP) -c Html1.cpp -o Html1.o $(CXXFLAGS)
+
+Html2.o: Html2.cpp
+	$(CPP) -c Html2.cpp -o Html2.o $(CXXFLAGS)
+
+LogFunc.o: LogFunc.cpp
+	$(CPP) -c LogFunc.cpp -o LogFunc.o $(CXXFLAGS)
+
+Mapfunc.o: Mapfunc.cpp
+	$(CPP) -c Mapfunc.cpp -o Mapfunc.o $(CXXFLAGS)
+
+Maps.o: Maps.cpp
+	$(CPP) -c Maps.cpp -o Maps.o $(CXXFLAGS)
+
+PlayerFunc.o: PlayerFunc.cpp
+	$(CPP) -c PlayerFunc.cpp -o PlayerFunc.o $(CXXFLAGS)
+
+Stats.o: Stats.cpp
+	$(CPP) -c Stats.cpp -o Stats.o $(CXXFLAGS)
+
+WeaponFunc.o: WeaponFunc.cpp
+	$(CPP) -c WeaponFunc.cpp -o WeaponFunc.o $(CXXFLAGS)
+
+wincon.o: wincon.cpp
+	$(CPP) -c wincon.cpp -o wincon.o $(CXXFLAGS)
+
+ansi.o: ansi.cpp
+	$(CPP) -c ansi.cpp -o ansi.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Project1_private.res: Project1_private.rc 
+	$(WINDRES) -i Project1_private.rc -I rc -o Project1_private.res -O coff 

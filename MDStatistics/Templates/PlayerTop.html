@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>Player Profile for $player.name</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="mD_stats.css" type="text/css">
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table class="tablebg" border="0" align="center" width="100%" cellpadding="0" cellspacing="0">
+  <tr><td colspan="2"><center> </center></td></tr> 
+    <td width="332">
+      <a class="headlink">  <!-- href="http://www.com/"> }-->
+        <img src="Images/title.gif" width="332" height="120" border="0" alt="Stats powered by .mD.Statistics">
+      </a>
+    </td>
+    <td width="100%" align="left" valign="middle">
+      <table border="0">
+        <tr>
+		<td nowrap valign="top">Server Name: </td>
+          <td><a class="plrlink" href="$webpage">$server.name</a></td>
+        </tr>
+        <tr>
+          <td nowrap valign="top">Server IP: </td>
+          <td>$server.ip</td>
+        </tr>
+        <tr>
+          <td nowrap valign="top">Admin: </td>
+          <td><a class="plrlink" href="mailto:$admin.email">$admin.name</a></td>
+        </tr>
+        <tr>
+          <td nowrap valign="top">Last Update: </td>
+          <td>$timedate </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<table width="100%" border="0">
+  <tr class="listhead" align="center">
+    <td><a class="plrlink" href="index.html">Player Ranks</a></td>
+    <td><a class="plrlink" href="weapon.html">Weapon Ranks</a></td>
+  </tr>
+</table>
+<br>
+<!-- Header Ends here }-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="Images/spacer.gif" width="8" height="1"></td>
+    <td><font size="+2">P</font><font size="+1">LAYER</font><font size="+2"> P</font><font size="+1">ROFILE</font>
+      <font size="+1">FOR </font><font size="+2">$player.name</font><br>
+      <img src="Images/line-blue.jpg" width="500" height="4"><br>
+      <!-- <b>$plrname</b> is ranked <b>$plrrank</b> and has played for <b>$plrtotaltime</b> in <b>$maxdays</b> days</td> {-->
+
+    <!-- <td colspan="2" align="center">$plrlogo</td> }-->
+  </tr>
+  <tr>
+    <td colspan="2"><img src="Images/spacer.gif" width="50" height="8"></td>
+  </tr>
+</table>
+<table width="98%" border="0" cellspacing="0" cellpadding="1" align="center">
+  <tr valign="top">
+    <td width="1%" align="left">
+      <table border="0" cellspacing="0" cellpadding="1" class="tablebg" width="225">
+        <tr>
+          <td>
+            <table border="0" cellpadding="2" cellspacing="1" width="100%">
+              <tr class="listhead" align="center">
+                <td colspan="2">General Statistics</td>
+              </tr>
+              <tr class="plrgenrow1">
+                <td nowrap>Rank</td>
+                <td align="left">$player.rank</td>
+              </tr>
+              <tr class="plrgenrow2">
+                <td nowrap>Total Kills</td>
+                <td align="left">$player.kills</td>
+              </tr>
+              <tr class="plrgenrow1">
+                <td nowrap>Total Deaths</td>
+                <td align="left">$player.deaths</td>
+              </tr>
+              <tr class="plrgenrow2">
+                <td nowrap>Total Suicides</td>
+                <td align="left">$player.suicides</td>
+              </tr>
+              <tr class="plrgenrow1">
+                <td nowrap>Efficiency %</td>
+                <td align="left">$player.kdp%</td>
+			  </tr>
+			  <tr class="plrgenrow2">
+                <td nowrap>Damage Delt</td>
+                <td align="left">$player.damdelt</td>
+              </tr>
+			  <tr class="plrgenrow1">
+                <td nowrap>Damage Take</td>
+                <td align="left">$player.damrec</td>
+			  </tr>
+			  <tr class="plrgenrow2">
+                <td nowrap>Damage Bled</td>
+                <td align="left">$player.dambleed</td>
+			  </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  <tr>
+   </tr>
+</table>
+ </tr>
+  <tr>
+    <td colspan="2"><img src="Images/spacer.gif" width="50" height="8"></td>
+<br>
+<!-- Header Ends here }-->
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><img src="Images/spacer.gif" width="8" height="1"></td>
+    <td><font size="+2">W</font><font size="+1">EAPON</font><font size="+2"> S</font><font size="+1">TATISTICS</font><br>
+      <img src="Images/line-blue.jpg" width="500" height="4"><br>
+      <!-- <b>$plrname</b> is ranked <b>$plrrank</b> and has played for <b>$plrtotaltime</b> in <b>$maxdays</b> days</td> {-->
+	</tr>
+  <tr>
+<!--    <td width="99%" align="left"> -->
+	  <table width="98%" border="0" cellspacing="0" cellpadding="1" align="center">
+  <tr valign="top">
+    <td width="1%" align="left">
+	  <table width="100%" border="0" cellspacing="0" cellpadding="1" class="tablebg">
+        <br>
+		<tr>
+          <td>
+            <table border="0" cellpadding="2" cellspacing="1" width="100%">
+           <!--   <tr class="plrgenhead">
+                <td align="center" colspan="9"><a name="weapons"></a>Weapon Statistics</td>
+              </tr> -->
+              <tr class="listhead" align="center">
+                <td nowrap width="30">#</td>
+                <td>Weapon</td>
+                <td nowrap width="75"class="selhead">Kills</td>
+                <td nowrap width="75">Deaths</td>
+                <td nowrap width="75">Suicides</td>
+                <td nowrap width="75">% of Kills</td>
+                <td nowrap width="100">%</td>
+                <td nowrap width="75">K:D</td>
+		<td nowrap width="75">Dmg Delt</td>
+		<td nowrap width="75">Dmg Take</td>
+              </tr>

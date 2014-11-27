@@ -65,23 +65,23 @@
 <br>
   <table width="98%" border="0" cellpadding="0" cellspacing="0" align="center">
     <tr valign="bottom">
-	  <td align="center"><font size="+2">T</font><font size="+1">OP</font><font size="+2"> $maxrank R</font><font size="+1">ANKED </font><font size="+2">P</font><font size="+1">LAYERS
-	  </font><font size="+2">F</font><font size="+1">OR </font><font size="+2">$servername</font></td>
+      <td align="center"><font size="+2">T</font><font size="+1">OP</font><font size="+2"> $maxrank R</font><font size="+1">ANKED </font><font size="+2">P</font><font size="+1">LAYERS
+      </font><font size="+2">F</font><font size="+1">OR </font><font size="+2">$servername</font></td>
     </tr>
     <tr><td height="5" align="center"><img src="images\line-blue.jpg" width="761" height="6"></td></tr>
     <tr><td height="17"><p>&nbsp;</p></td></tr>
   </table>
   <table width="98%" border="0" cellpadding="1" cellspacing="1" class="row1" align="center">
-	<tr class="plrgenrow1" align="center">
-	<td nowrap width="37" class="listhead"><b>Rank</b></td>
-	<td width="196" align="left" class="listhead">&nbsp;<img src="Images/player.gif" width="17" height="17" border="0"> Name</td>
-	<td nowrap width="86" class="selhead"><b>Kills</b></td>
-	<td nowrap width="86" class="listhead">Dmg Delt</td>
-	<td nowrap width="86" class="listhead"><b>Deaths</b> </td>
-	<td nowrap width="91" class="listhead">Dmg Took</td>
-	<td nowrap width="83" class="listhead"><b>Sui's</b> </td>
-	<td nowrap width="73" class="listhead">Dmg Bled</td>
-	<td nowrap width="102" class="listhead"> <b>Efficiency</b></td>
-	<td nowrap width="110" class="listhead">K:D</td>
+    <tr class="plrgenrow1" align="center">
+    <td nowrap width="37" class="listhead"><b>Rank</b></td>
+    <td width="196" align="left" class="listhead">&nbsp;<img src="Images/player.gif" width="17" height="17" border="0"> Name</td>
+    <td nowrap width="86" class="selhead"><b>Kills</b></td>
+    <td nowrap width="86" class="listhead">Dmg Delt</td>
+    <td nowrap width="86" class="listhead"><b>Deaths</b> </td>
+    <td nowrap width="91" class="listhead">Dmg Took</td>
+    <td nowrap width="83" class="listhead"><b>Sui's</b> </td>
+    <td nowrap width="73" class="listhead">Dmg Bled</td>
+    <td nowrap width="102" class="listhead"> <b>Efficiency</b></td>
+    <td nowrap width="110" class="listhead">K:D</td>
   </tr>
   </table>

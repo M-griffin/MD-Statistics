@@ -27,19 +27,19 @@ extern long   MAXRANK;          // Max # of Players in Player Rankings
 extern long   MAXWEAPONRANK;    // Max # of Players in Weapon Rankings
 extern char   LOGPATH[255];     // Log File Path
 extern char   HTMLPATH[255];    // HTML Output Path
-extern char   SERVERNAME[255];	// HTML Server Name
+extern char   SERVERNAME[255];    // HTML Server Name
 extern char   SERVERIP[255];    // Server IP Address
-extern char   WEBPAGE[255];	// Server Web Page
-extern char   ADMINNAME[255];	// Admin Name
-extern char   ADMINEMAIL[255];	// Admin Email
+extern char   WEBPAGE[255];    // Server Web Page
+extern char   ADMINNAME[255];    // Admin Name
+extern char   ADMINEMAIL[255];    // Admin Email
 
 // Program Globlas
 extern char szDateFormat[128];  // System Date
 extern char szTimeFormat[128];  // System Time
-extern char MAPNAME[30];	// Current Map
-extern char NEWMAP[30];		// Test for New Map
+extern char MAPNAME[30];    // Current Map
+extern char NEWMAP[30];        // Test for New Map
 extern char CURRMAP[30];        // Current Map (During Processing)
-extern bool TEAM;		// 0 False = Red / 1 True = Blue
+extern bool TEAM;        // 0 False = Red / 1 True = Blue
 
 
 /*--------------------------------------------------------------------------------*/
@@ -48,8 +48,8 @@ extern bool TEAM;		// 0 False = Red / 1 True = Blue
 
 /*--------------------------------------------------------------------------------*/
 // Structure Holds All Log FileNames
-typedef struct{               
-	char   currmap[30];	  // Current Map Name
+typedef struct{
+    char   currmap[30];      // Current Map Name
 }CONFIG;
 
 
@@ -99,7 +99,7 @@ typedef struct{
         WEAPONREC claymore;       // CLAYMORE (Land Mine)
         WEAPONREC frag;           // M-61 FRAGMENTATION GRENADE
         WEAPONREC stg24;          // STIELHANDGRANATE
-        WEAPONREC uzi;            
+        WEAPONREC uzi;
         WEAPONREC pkm;
         WEAPONREC ak74;
         WEAPONREC svd;
@@ -119,8 +119,8 @@ typedef struct{
         // WEAPONREC trigger_hurt;
         // WEAPONREC world;
         // WEAPONREC worldspawn;
-        
-        // Map / Team Statistics       
+
+        // Map / Team Statistics
 }WEAPONSTRUCT;
 
 
@@ -139,8 +139,8 @@ typedef struct{
         long         damdelt;          // Damage delt to Other Players
         long         damrec;           // Damage Received from Other Players
         char         dratio[10];       // Players Damage Ratio, Inflicted / Received
-        long         dambleed;         // Bleeding Damage        
-	WEAPONSTRUCT weapon;	       // Weapon Statistics
+        long         dambleed;         // Bleeding Damage
+    WEAPONSTRUCT weapon;           // Weapon Statistics
 }PLAYERREC2;
 
 /*--------------------------------------------------------------------------------*/
@@ -155,20 +155,20 @@ typedef struct{
 
 /*--------------------------------------------------------------------------------*/
 // Structure Holds Basic Map Stats
-typedef struct{  
-	PLAYERREC2 player2;
+typedef struct{
+    PLAYERREC2 player2;
         // Player's Team / Map Statistics
 }MAPREC;
 
 /*--------------------------------------------------------------------------------*/
 // Structure Holds All Player Names in Log File
-typedef struct{        
-	char         mapname[30];      // Map Name
-        MAPREC	     redforce;         // Statistics for Red Team on This Map
-        MAPREC	     blueforce;        // Statistics for Blue Team on this map	
-	int          index;            // Player Index in Data File
+typedef struct{
+    char         mapname[30];      // Map Name
+        MAPREC         redforce;         // Statistics for Red Team on This Map
+        MAPREC         blueforce;        // Statistics for Blue Team on this map
+    int          index;            // Player Index in Data File
         int          rank;             // Players Rank
-        char	     playername[30];   // Player Name
+        char         playername[30];   // Player Name
         long         kills;            // Kills
         long         deaths;           // # of Times Killed
         long         sui;              // # of Times Player has killed Self
@@ -320,15 +320,15 @@ struct ListItem11
 // Link List for Holding all Players during log parsing until write to player.dat
 struct ListItem13
 {
-        
-	PLAYERREC player;		
+
+    PLAYERREC player;
         struct ListItem13 *next;
 };
 
 /*--------------------------------------------------------------------------------*/
 // Link List for Holding all Players Data Faster Statistics Generation
 struct ListItem14
-{        
+{
         PLAYERREC player;
         struct ListItem14 *next;
 };
@@ -352,7 +352,7 @@ struct ListItem18
 /*--------------------------------------------------------------------------------*/
 // Link List for Holding all Weapon Data Faster HTML Creation
 struct ListItem15
-{        
+{
         WEAPONREC weapon;
         struct ListItem15 *next;
 };
@@ -360,7 +360,7 @@ struct ListItem15
 /*--------------------------------------------------------------------------------*/
 // Link List for Holding Log Files names and Sorting in Creation Order
 struct ListItem16
-{        
+{
         LOGNAME log;
         struct ListItem16 *next;
 };
@@ -368,7 +368,7 @@ struct ListItem16
 /*--------------------------------------------------------------------------------*/
 // Link List for Holding Log Files names and Sorting in Creation Order
 struct ListItem17
-{        
+{
         MAPNAMEREC map;
         struct ListItem17 *next;
 };

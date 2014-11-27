@@ -24,9 +24,9 @@ using namespace std;              // Standard C++ Namespace
 // GLOBALS - Link List's For Data Contianers
 /*--------------------------------------------------------------------------------*/
 /*
-struct ListItem12 *MyList12 = 0 ; // Holds Player Ranks .dat Data			PLAYERREC
-struct ListItem14 *MyList14 = 0 ; // Holding All Player Data while Creating HTML Files	PLAYERREC
-struct ListItem15 *MyList15 = 0 ; // Holding all Weapon Data While Calculating Stats	WEAPONREC
+struct ListItem12 *MyList12 = 0 ; // Holds Player Ranks .dat Data            PLAYERREC
+struct ListItem14 *MyList14 = 0 ; // Holding All Player Data while Creating HTML Files    PLAYERREC
+struct ListItem15 *MyList15 = 0 ; // Holding all Weapon Data While Calculating Stats    WEAPONREC
 
 /*--------------------------------------------------------------------------------*/
 // LINK LISTS Data Sorting Functions & Memory Freeing Functions

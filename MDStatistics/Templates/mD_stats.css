@@ -1,120 +1,120 @@
 A.skill {
-	FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none
+    FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: none
 }
 A.skill:hover {
-	FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: underline
+    FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: underline
 }
 A.skill:active {
-	FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: underline
+    FONT-WEIGHT: bold; COLOR: #ffffff; TEXT-DECORATION: underline
 }
 A {
-	COLOR: #a4acbd; TEXT-DECORATION: none
+    COLOR: #a4acbd; TEXT-DECORATION: none
 }
 A:hover {
-	COLOR: #a4acbd; TEXT-DECORATION: underline
+    COLOR: #a4acbd; TEXT-DECORATION: underline
 }
 A:active {
-	COLOR: #a4acbd; TEXT-DECORATION: underline
+    COLOR: #a4acbd; TEXT-DECORATION: underline
 }
 BODY {
-	MARGIN: 0px; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #142234
+    MARGIN: 0px; FONT-FAMILY: Verdana; BACKGROUND-COLOR: #142234
 }
 BODY {
-	SCROLLBAR-FACE-COLOR: #cfcfcf; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #595959; SCROLLBAR-3DLIGHT-COLOR: #595959; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #ffffff; SCROLLBAR-BASE-COLOR: #cfcfcf
+    SCROLLBAR-FACE-COLOR: #cfcfcf; SCROLLBAR-HIGHLIGHT-COLOR: #ffffff; SCROLLBAR-SHADOW-COLOR: #595959; SCROLLBAR-3DLIGHT-COLOR: #595959; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-DARKSHADOW-COLOR: #ffffff; SCROLLBAR-BASE-COLOR: #cfcfcf
 }
 TD {
-	FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Verdana
+    FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Verdana
 }
 DIV {
-	FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Verdana
+    FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Verdana
 }
 .tablebg {
-	BACKGROUND: #5b687a; FONT-FAMILY: Verdana
+    BACKGROUND: #5b687a; FONT-FAMILY: Verdana
 }
 .listhead {
-	BACKGROUND-COLOR: #3e4b5d
+    BACKGROUND-COLOR: #3e4b5d
 }
 .selhead {
-	BACKGROUND-COLOR: #586678
+    BACKGROUND-COLOR: #586678
 }
 .headlink {
-	COLOR: #ffcc99
+    COLOR: #ffcc99
 }
 .plrlink {
-	COLOR: #a4acbd	
+    COLOR: #a4acbd
 }
 .row1 {
-	BACKGROUND-COLOR: #0e1a2a
+    BACKGROUND-COLOR: #0e1a2a
 }
 .row2 {
-	BACKGROUND-COLOR: #172234
+    BACKGROUND-COLOR: #172234
 }
 .maprow1 {
-	BACKGROUND-COLOR: #0e1a2a
+    BACKGROUND-COLOR: #0e1a2a
 }
 .maprow2 {
-	BACKGROUND-COLOR: #172234
+    BACKGROUND-COLOR: #172234
 }
 .plrrow1 {
-	BACKGROUND-COLOR: #0e1a2a
+    BACKGROUND-COLOR: #0e1a2a
 }
 .plrrow2 {
-	BACKGROUND-COLOR: #172234
+    BACKGROUND-COLOR: #172234
 }
 .plrgenhead {
-	BACKGROUND-COLOR: #666633
+    BACKGROUND-COLOR: #666633
 }
 .plrgenrow1 {
-	BACKGROUND-COLOR: #333333
+    BACKGROUND-COLOR: #333333
 }
 .plrgenrow2 {
-	BACKGROUND-COLOR: #555555
+    BACKGROUND-COLOR: #555555
 }
 .plrkilldesc {
-	COLOR: #000055
+    COLOR: #000055
 }
 .plrdeathdesc {
-	COLOR: #550000
+    COLOR: #550000
 }
 .plrdmgdesc {
-	COLOR: #005500
+    COLOR: #005500
 }
 .plracrydesc {
-	COLOR: #bbbb00
+    COLOR: #bbbb00
 }
 .plrkillbar {
-	BACKGROUND-COLOR: #000055
+    BACKGROUND-COLOR: #000055
 }
 .plrdeathbar {
-	BACKGROUND-COLOR: #550000
+    BACKGROUND-COLOR: #550000
 }
 .plrdmgbar {
-	BACKGROUND-COLOR: #005500
+    BACKGROUND-COLOR: #005500
 }
 .plracrybar {
-	BACKGROUND-COLOR: #bbbb00
+    BACKGROUND-COLOR: #bbbb00
 }
 .plrrolebar {
-	BACKGROUND-COLOR: #000055
+    BACKGROUND-COLOR: #000055
 }
 .plrweaponawardfont {
-	FONT-WEIGHT: bold; COLOR: #ffffff
+    FONT-WEIGHT: bold; COLOR: #ffffff
 }
 .plrawardfont {
-	FONT-WEIGHT: bold; COLOR: #ffffff
+    FONT-WEIGHT: bold; COLOR: #ffffff
 }
 .goodhead {
-	BACKGROUND-COLOR: #000033
+    BACKGROUND-COLOR: #000033
 }
 .badhead {
-	BACKGROUND-COLOR: #330000
+    BACKGROUND-COLOR: #330000
 }
 .indextitle {
-	FONT-WEIGHT: bold; FONT-SIZE: 14px; FONT-FAMILY: Verdana
+    FONT-WEIGHT: bold; FONT-SIZE: 14px; FONT-FAMILY: Verdana
 }
 .plrpctbar1 {
-	BACKGROUND: #000055
+    BACKGROUND: #000055
 }
 .weaponback1 {
-	BACKGROUND-COLOR: #142234
+    BACKGROUND-COLOR: #142234
 }

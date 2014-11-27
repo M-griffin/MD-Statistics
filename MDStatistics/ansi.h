@@ -12,9 +12,9 @@
 /*--------------------------------------------------------------------------------*/
 typedef struct
 {
-  	char fc;
-   	char bc;
-  	char addi;
+      char fc;
+       char bc;
+      char addi;
 
 } SCREENINFO;
 

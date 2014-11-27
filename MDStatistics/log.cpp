@@ -1,15 +1,15 @@
 /*
-    
+
     .mD.Statistics
     Half Life Log Parser & HTML Statistics Generation (c) Michael Griffin .2002. / .2003.
     For Half Life FireArms Mod v2.6
     MrMisticismo@hotmail.com
 
     [Developed and Compiled on Borland C++ Builder 5.5 & 6, Visual C++ 6.0 SP5 & DevC++]
-    On Windows Platform 
-    
+    On Windows Platform
+
     [Developed and Compiles with g++ 2.95.3 Ported for Linux 1/8/03]
-    
+
 ------------------- Created starting with FA version 2.5 --------------------------------------------------------------------------------------------
 
         03/26/02 - Started Basic Structure
@@ -140,14 +140,14 @@
         06/27/02 - Fixed Memory Leak YIPPIE!!   No Working on a couple minor speed up, and some
                  - extra log parsing information, what log file is being parsed etc...
                  - Updated All Link Lists in HTML1 to 'new & delete'
-		 - Fixed Visual C++ Build by replacing time() with GetTimeFormat() & GetDateFormat()
-	06/29/02 - Working on Rewriting calculation for speed up, Load All Players into memory and
-		   Then Calculate Stats,, Also will try this for HTML Creation to speed that up also.
-	06/30/02 - Sped Up Every Function for Writing Out HTML Files.. Left Out Putting ALL players
-		   into link list for Writting out Weapon Ranks, Might Be a Little To Much Memory.
-		   Will run a test later on it.
-		 - Next Maybe Speed up Calculation of Statistics.. But Runs Great for Now.
-		 - Broke off HTML Tempaltes into a Seperate Folder
+         - Fixed Visual C++ Build by replacing time() with GetTimeFormat() & GetDateFormat()
+    06/29/02 - Working on Rewriting calculation for speed up, Load All Players into memory and
+           Then Calculate Stats,, Also will try this for HTML Creation to speed that up also.
+    06/30/02 - Sped Up Every Function for Writing Out HTML Files.. Left Out Putting ALL players
+           into link list for Writting out Weapon Ranks, Might Be a Little To Much Memory.
+           Will run a test later on it.
+         - Next Maybe Speed up Calculation of Statistics.. But Runs Great for Now.
+         - Broke off HTML Tempaltes into a Seperate Folder
         07/08/02 - Fixed Log Parsing Log problem, added \r into log file for splitting log lines
                  - Also added log line counting to remove last line of log file if it is bad.
                  - Build 7.4 ...
@@ -157,116 +157,116 @@
         07/10/02 - Restructing Log Handeling, Sorting Log Names in Order to Process Logs in Order
                    For Proper / cloest to possiable map tracting from 1 log to the next...
                  - Redesigned Output for User End.. + Lots of Code Clean up
-	07/12/02 - Setup Map Structures and new Config.dat Structure to Hold Current Map for Next Log Parsing run
-		 - Have Globals set for Map. now just have to setup Players Stats to Maps and Save to Map Data file
-	07/14/02 - Finished udateing and spliting log parsing into Seperate dat's for each map.
-		   Next just need to sorta it and output.. and creat new HTML for maps..
-		 - Moved All Data Files to a [Data] Directory for clearner program layout
+    07/12/02 - Setup Map Structures and new Config.dat Structure to Hold Current Map for Next Log Parsing run
+         - Have Globals set for Map. now just have to setup Players Stats to Maps and Save to Map Data file
+    07/14/02 - Finished udateing and spliting log parsing into Seperate dat's for each map.
+           Next just need to sorta it and output.. and creat new HTML for maps..
+         - Moved All Data Files to a [Data] Directory for clearner program layout
         07/16/02 - Breaking up Source, Adding New Stats.Cpp and Maps.Cpp for Extra Processing
         07/18/02 - Fixed Problem in Data files.. Needed to 0 out variables before saving or
                    adding / subtracting.. etc..
                  - Now need to Setup PlayerRankCalcStats..  So it Calculcated all those statistics
                    Then program should be able to run almost where it left off..
-		 - Fixed Up to Player Rankings, Now have to Kick off Weapon Sorting - Finished!!
-		 - Starting on Player Rankings HTML
-	07/19/02 - Finished Converting Player Ranks and Player Statistics HTML, No Fixing HTML Templates.
+         - Fixed Up to Player Rankings, Now have to Kick off Weapon Sorting - Finished!!
+         - Starting on Player Rankings HTML
+    07/19/02 - Finished Converting Player Ranks and Player Statistics HTML, No Fixing HTML Templates.
                  - Fixed up config file and Tamplate to hold Server/Admin Names Ip and Web Addreses.. etc.
                  - Need to Fix Bug, IMI DESERT EAGLE 2 times in Player Weapon Rankings. =(
-	07/20/02 - Added New Console.cpp and Console.h for New Console Functino to Change Text Color,
-		   Cursor Position for a Better User Interface.. =)
-        07/21/02 - Finished New Inferface.. Looks Great, will add Percentage later... 
+    07/20/02 - Added New Console.cpp and Console.h for New Console Functino to Change Text Color,
+           Cursor Position for a Better User Interface.. =)
+        07/21/02 - Finished New Inferface.. Looks Great, will add Percentage later...
                  - Finished Fixing up All Templates and Weapon HTML Files Build .87
         08/07/02 - Working on Percentage Complete for each process..
                  - Completed Percentage for Log parsing and saving only.
         08/13/02 - Reworking PlayerRank.dat system.. putting into Link List before writes..
         08/18/02 - Still Reworking PlayerRank.dat
-                 - Finished Ranks, Everything is working again.. YAY 
-                 
+                 - Finished Ranks, Everything is working again.. YAY
+
 ------------------- Compiler Fixes ---------------------------------------------------------------------------------------------
 
         11/25/02 - Updated all c++ Read/Write from .data() to .c_str, Previouslu
-        	   was only compiling on Borland C++ Builder 6, Now will compile on all
-        	   C++ Compiles Again, Visual C++ and Dev++ (Main Working Enviroment now)
-        	 - Changed all Globals from String to Char[] for Compatibilty
-        	 - Fixed for Linux Compatibility with Character Arrays,
-       	 	   For full need to Replace Time and Directory Functions
-       	 	 - Removes all Players with Freshmeat in Name!
-        	 - Changeing Cout to Prinf for proper Console display
-        	 - Build 91
+               was only compiling on Borland C++ Builder 6, Now will compile on all
+               C++ Compiles Again, Visual C++ and Dev++ (Main Working Enviroment now)
+             - Changed all Globals from String to Char[] for Compatibilty
+             - Fixed for Linux Compatibility with Character Arrays,
+                   For full need to Replace Time and Directory Functions
+                 - Removes all Players with Freshmeat in Name!
+             - Changeing Cout to Prinf for proper Console display
+             - Build 91
 
         11/26/02 - Fixed Config file recreation if missing, ofstream::out | ofstream::trunc
-        	   and fixed the path setup aswell.
-        	 - Fixed some more overlooks on paths with data files, and replace more cout's
-        	   with printf's
-        	 - Also fixed some Percentag's Goof's on Display. And more HTML Output
-        	   Path's.  Weird that it was working the way it was..  hmmmm
-        	 - Fixed more i/o functions with fclose in them causing program to exit!
-        	   When file was not opened in first place!
-      	         - Build 92
+               and fixed the path setup aswell.
+             - Fixed some more overlooks on paths with data files, and replace more cout's
+               with printf's
+             - Also fixed some Percentag's Goof's on Display. And more HTML Output
+               Path's.  Weird that it was working the way it was..  hmmmm
+             - Fixed more i/o functions with fclose in them causing program to exit!
+               When file was not opened in first place!
+                   - Build 92
 
-        	 - Need to add extra conio.h from linux for console interface! should also rip out
-        	   all conio.h functions being used and added to console.cpp / h to make faster.
-        	 - also need to replease direct.h with io.h for current working dir.
-        	 - Also Need to Remove String Conversions in Parsing, no longer String
-        	   So don't have to convert to Char Arrays anymore!! :))
+             - Need to add extra conio.h from linux for console interface! should also rip out
+               all conio.h functions being used and added to console.cpp / h to make faster.
+             - also need to replease direct.h with io.h for current working dir.
+             - Also Need to Remove String Conversions in Parsing, no longer String
+               So don't have to convert to Char Arrays anymore!! :))
 
         11/27/02 - Making some minor Code Optimizations and Cleaning up the comments!
-        	 - EXE Optimized 17k by removing all = 0's to Memset(Struct) for Big Functions!
-        	 - Build 93
+             - EXE Optimized 17k by removing all = 0's to Memset(Struct) for Big Functions!
+             - Build 93
 
         11/28/02 - Reworking for new Temples of Player Rankings
-        	 - Build 94
+             - Build 94
 
-      	11/29/02 - Added Sleep()'s to help kill off the constant 100% CPU useage,  will add
-      		   a variable to the confile to set the delay manually for people who aren't
+          11/29/02 - Added Sleep()'s to help kill off the constant 100% CPU useage,  will add
+                 a variable to the confile to set the delay manually for people who aren't
                    worried about cpu usage.. ;) Build 95
                  - A bite more of code cleaning up.  Weeeeeeeeeeeeeeeeeeee
 
-	01/07/03 - Moved to Linux Platform, going through major re-write of complete program :)
+    01/07/03 - Moved to Linux Platform, going through major re-write of complete program :)
 
-	01/08/03 - Log Parsing Ported over, finishing player statistics
+    01/08/03 - Log Parsing Ported over, finishing player statistics
 
-		 - Everything is Converted Over to Linux, Percentages arn't working with the conversion
-		   from double to long.  And time.h needs to repleace windows api time functions.
-		   
+         - Everything is Converted Over to Linux, Percentages arn't working with the conversion
+           from double to long.  And time.h needs to repleace windows api time functions.
+
         01/09/03 - Complete Full Ports of Windows and Linux with same source code. Phewwwwwww
-        	 - Will rework GUI later for ansi in both windows and linux, Starting to work
-        	   on new map code. Sleep()'s only done in Linux at the moment
-        	   
+             - Will rework GUI later for ansi in both windows and linux, Starting to work
+               on new map code. Sleep()'s only done in Linux at the moment
+
         01/10/03 - Adding new Windows Console Functions and handling, Wincon.cpp, a seperate one
-        	   will be created for linux's console output as well.
-        	   
+               will be created for linux's console output as well.
+
         01/22/03 - Cleaning up some Functions and getting ready for map processing.
-        
+
         01/24/03 - Adding IDX files for each MAPNAME.DAT for Indexing of Player data,
-        	   This should help make searching and reading and writing of data files a 
-        	   bit faster. - Working Great, Has double the speed of Log Data Saving,
-        	   as well as player purging.    	         
-                 - Make an IDX of the Playerrank also for faster processing in Stats and HTML		   
+               This should help make searching and reading and writing of data files a
+               bit faster. - Working Great, Has double the speed of Log Data Saving,
+               as well as player purging.
+                 - Make an IDX of the Playerrank also for faster processing in Stats and HTML
                  - Code Cleanup and Removed a few functions that were not being used anymore.
 
         01/25/03 - Reworking Parsing of Log Data, Removing extra function work and breaking off
-        	   The String parsing to update the user data directly / faster!	
-		 - Finished Rewritting the reparsing, optimized about 2k of exe and it's a lot
-		   more workable now.
-		   
+               The String parsing to update the user data directly / faster!
+         - Finished Rewritting the reparsing, optimized about 2k of exe and it's a lot
+           more workable now.
+
         01/30/03 - Fixed bugs in parsing code that wasn't registering damage received.
-        	 - Also re-write of the purging code for players,  now purges correctly
-        	   only players with freshmeat and players with 0 kills on a map.
-      	         - Added extra GUI clearing functions... Clear All, Clear all Right / Left
-      	         
+             - Also re-write of the purging code for players,  now purges correctly
+               only players with freshmeat and players with 0 kills on a map.
+                   - Added extra GUI clearing functions... Clear All, Clear all Right / Left
+
         01/31/03 - Reworking Player Rankings with new Tamplates, Also Multiple index.html
-        	   For Rankings per Statistics.
-        	   
+               For Rankings per Statistics.
+
         02/01/03 - Reworked Temp dat functions.  Instead of Writtting to Temp file and then
-        	   Renaming temp.  All data is copied to Link List. then Saved to remove
-        	   Unnessary Processing.
-        	   
-	02/04/03 - Finished NEW GUI for all processes.  Need a little tweaking but all the
-	           Work and complicated shit is out of the way.  :)  Yippie.
-                 
-                 
-		   
+               Renaming temp.  All data is copied to Link List. then Saved to remove
+               Unnessary Processing.
+
+    02/04/03 - Finished NEW GUI for all processes.  Need a little tweaking but all the
+               Work and complicated shit is out of the way.  :)  Yippie.
+
+
+
 
    *Overview. Program Reads all Log Files. Puts LOG Names into a Log.dat Index's them.
     Logs files are only read once then Stats Are generated and placed into Player.dat for each player
@@ -287,8 +287,8 @@
 
 // Linux Specific Headers
 #ifdef _LINUX
-#include <unistd.h>		// CWD
-//#include <linux/delay.h>	// SLEEP()
+#include <unistd.h>        // CWD
+//#include <linux/delay.h>    // SLEEP()
 #endif
 
 #ifdef _WIN32
@@ -316,18 +316,18 @@ using namespace std;            // Standard C++ Namespace
 // Globals - Extern in Structs.h
 /*--------------------------------------------------------------------------------*/
 
-char 	PATH[255];		// Global Path
-long 	MAXRANK = 0;		// Max # of Players in Player Rankings
-long 	MAXWEAPONRANK = 0; 	// Max # of Players in Weapon Rankings
-char 	LOGPATH[255];     	// Log File Path
-char 	HTMLPATH[255];    	// HTML Output Path
+char     PATH[255];        // Global Path
+long     MAXRANK = 0;        // Max # of Players in Player Rankings
+long     MAXWEAPONRANK = 0;     // Max # of Players in Weapon Rankings
+char     LOGPATH[255];         // Log File Path
+char     HTMLPATH[255];        // HTML Output Path
 
-char 	szDateFormat[128];	// System Date
-char 	szTimeFormat[128];	// System Time
-char 	MAPNAME[30];	 	// Current Map
-char 	NEWMAP[30];	 	// Test for New Map
-char 	CURRMAP[30]; 	 	// Current Map (During Processing)
-bool 	TEAM = true;	 	// 0 true = Red / 1 False = Blue
+char     szDateFormat[128];    // System Date
+char     szTimeFormat[128];    // System Time
+char     MAPNAME[30];         // Current Map
+char     NEWMAP[30];         // Test for New Map
+char     CURRMAP[30];          // Current Map (During Processing)
+bool     TEAM = true;         // 0 true = Red / 1 False = Blue
 
 /*--------------------------------------------------------------------------------*/
 // MAIN PROGRAM ENTRANCE
@@ -338,9 +338,9 @@ bool 	TEAM = true;	 	// 0 true = Red / 1 False = Blue
 int main()
 {
 
-	CONFIG cfg;   // Handle to Current Map Name
+    CONFIG cfg;   // Handle to Current Map Name
 
-	// Setup Global Path in Structs.h
+    // Setup Global Path in Structs.h
         #ifdef _LINUX
         sprintf (PATH, "%s/", getcwd( NULL,255));
         #endif
@@ -368,131 +368,131 @@ int main()
                 strcpy(HTMLPATH,PATH);
         }
 
-	// Create Config.dat
-	if(cfgdataexists() == false) {
-		char text1[40] = "Can't Create config.dat! ";
-	        drawleft(text1,12,0);
-	        #ifdef _WIN32
-         	system("pause");
-         	#endif
+    // Create Config.dat
+    if(cfgdataexists() == false) {
+        char text1[40] = "Can't Create config.dat! ";
+            drawleft(text1,12,0);
+            #ifdef _WIN32
+             system("pause");
+             #endif
                 exit(1);   // Exit Program if Error Occurs
-	}
+    }
 
-	if (countcfg() == 0) {
-		strcpy(MAPNAME, "unknown");
-	}
-	else {
-		readcfg(&cfg,0);
-		strcpy(MAPNAME,cfg.currmap);
-	}
+    if (countcfg() == 0) {
+        strcpy(MAPNAME, "unknown");
+    }
+    else {
+        readcfg(&cfg,0);
+        strcpy(MAPNAME,cfg.currmap);
+    }
 
-	// Setup Log Parsing
-	strcpy(NEWMAP,MAPNAME);
+    // Setup Log Parsing
+    strcpy(NEWMAP,MAPNAME);
 
         // Do Error Checking if Log.dat File exists, if not creates it
         if(dataexists() == false) {
                 char text1[40] = "Can't Create log.dat! ";
-	        drawleft(text1,12,0);
-	        #ifdef _WIN32
-         	system("pause");
-         	#endif
+            drawleft(text1,12,0);
+            #ifdef _WIN32
+             system("pause");
+             #endif
                 exit(1);   // Exit Program if Error Occurs
         }
 
         // Do Error Checking if Weapon.dat File exists, if not creates it
         if(wdataexists() == false) {
                 char text1[40] = "Can't Create Weapon.dat! ";
-	        drawleft(text1,12,0);
-	        #ifdef _WIN32
-         	system("pause");
-         	#endif
+            drawleft(text1,12,0);
+            #ifdef _WIN32
+             system("pause");
+             #endif
                 exit(1);   // Exit Program if Error Occurs
         }
 
-	// Do Error Checking if Weapon.dat File exists, if not creates it
+    // Do Error Checking if Weapon.dat File exists, if not creates it
         if(mdataexists() == false) {
                 char text1[40] = "Can't Create Map.dat! ";
-	        drawleft(text1,12,0);
-	        #ifdef _WIN32
-         	system("pause");
-         	#endif
+            drawleft(text1,12,0);
+            #ifdef _WIN32
+             system("pause");
+             #endif
                 exit(1);   // Exit Program if Error Occurs
         }
 
         #ifdef _WIN32
         GetTimeFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
-	GetDateFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szDateFormat, 50 );
-	SetConsoleTitle(" .mD.Statistics For Firearms Mod v2.6 [Alpha] Release - Webpage Statistics");
-  	system("cls");
-   	system("GUI.COM"); // Kick off GUI Interface... 
-    	#endif
+    GetDateFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szDateFormat, 50 );
+    SetConsoleTitle(" .mD.Statistics For Firearms Mod v2.6 [Alpha] Release - Webpage Statistics");
+      system("cls");
+       system("GUI.COM"); // Kick off GUI Interface...
+        #endif
 
-   	#ifdef _LINUX
-   	// Add Linux Time here.. Still missing from Linux Port.
+       #ifdef _LINUX
+       // Add Linux Time here.. Still missing from Linux Port.
         system("clear");
-        //System("cat GUI.ANS");    - Not yet Implimented a GUI for Linux - Text Only!                  
+        //System("cat GUI.ANS");    - Not yet Implimented a GUI for Linux - Text Only!
         printf("\n+----------------------------------------------------------------+\n");
-	printf("| .mD.Statistics For Firearms Mod v2.6 : [Build 0.1.0.9] 2/04/03 |\n");
-	printf("| (c) 2002-2003 Michael Griffin (Webpage Statistics Generator)   |\n");
-	printf("+----------------------------------------------------------------+\n\n");
-	#endif
-		
+    printf("| .mD.Statistics For Firearms Mod v2.6 : [Build 0.1.0.9] 2/04/03 |\n");
+    printf("| (c) 2002-2003 Michael Griffin (Webpage Statistics Generator)   |\n");
+    printf("+----------------------------------------------------------------+\n\n");
+    #endif
+
         // Start Program Operations here, Parsing of Log Files
         dologparsing();
-        
+
         // Error Checking if any Log files are avial to be read..
 
-	if (countlogs() == 0) {
+    if (countlogs() == 0) {
                 char text1[40] = "No log files found! ";
-	        drawleft(text1,12,0);
-	        #ifdef _WIN32
-         	system("pause");
-         	#endif
-                
+            drawleft(text1,12,0);
+            #ifdef _WIN32
+             system("pause");
+             #endif
+
                 return 0;
         }
 
-	strcpy(cfg.currmap,NEWMAP);
-	writecfg(&cfg,0);
+    strcpy(cfg.currmap,NEWMAP);
+    writecfg(&cfg,0);
 
-	delplayer();            // Removes Player's with 0 Kills From Rankings
+    delplayer();            // Removes Player's with 0 Kills From Rankings
 
         dostatcacl();           // Do Player Stat Calculations
 
         doplayersrankHTML();    // Process Player Rankings Index.html
-	doplayersHTML();        // Processes Individual Player Statistics with Weapons Stats
+    doplayersHTML();        // Processes Individual Player Statistics with Weapons Stats
 
-	doweaponHTML();         // Processes Weapon Rankings, And Indivdual Weapons Statistics
+    doweaponHTML();         // Processes Weapon Rankings, And Indivdual Weapons Statistics
         clearwkillsort();       // Clears Link List for Weapon Sorting And Ranks calcwrank(); =)
         doweaponrankHTML();     // Process for Weapon Rankings Weapon.HTML
 
-   	string tpath = PATH;
-        
+       string tpath = PATH;
+
         clearall();
-        
-        #ifdef _WIN32        
+
+        #ifdef _WIN32
         char text2[40];
         sprintf(text2,"Started: [%s]",szTimeFormat );
         drawleft(text2,3,0);
-        
+
         GetTimeFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
         char text4[40];
         sprintf(text2,"Ended:   [%s]\n\n",szTimeFormat );
         drawleft2(text2,3,0);
         system("pause");
         string temp0 = tpath+"Data\\playerrank.dat";
-  	string temp1 = tpath+"Data\\playerrank.idx";
-   	#endif
-   	
-   	#ifdef _LINUX
+      string temp1 = tpath+"Data\\playerrank.idx";
+       #endif
+
+       #ifdef _LINUX
         string temp0 = tpath+"Data/playerrank.dat";
-  	string temp1 = tpath+"Data/playerrank.idx";
-  	#endif
-        		
-	// Removes Playerrank files for refresh.
-	remove(temp0.c_str());
-	remove(temp1.c_str());
-	
+      string temp1 = tpath+"Data/playerrank.idx";
+      #endif
+
+    // Removes Playerrank files for refresh.
+    remove(temp0.c_str());
+    remove(temp1.c_str());
+
         return 0;
 }
 /*--------------------------------------------------------------------------------*/

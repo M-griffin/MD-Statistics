@@ -31,9 +31,9 @@ struct ListItem5  *MyList5  = 0 ; // PlayerTop.HTML
 struct ListItem6  *MyList6  = 0 ; // PlayerRow1.HTML
 struct ListItem7  *MyList7  = 0 ; // PlayerRow2.HTML
 
-struct ListItem12 *myList12 = 0 ; // Holds Player Ranks .dat Data			PLAYERREC2
-struct ListItem14 *myList14 = 0 ; // Holding All Player Data while Creating HTML Files	PLAYERREC
-struct ListItem15 *myList15 = 0 ; // Holding all Weapon Data While Calculating Stats	WEAPONREC
+struct ListItem12 *myList12 = 0 ; // Holds Player Ranks .dat Data            PLAYERREC2
+struct ListItem14 *myList14 = 0 ; // Holding All Player Data while Creating HTML Files    PLAYERREC
+struct ListItem15 *myList15 = 0 ; // Holding all Weapon Data While Calculating Stats    WEAPONREC
 
 /*--------------------------------------------------------------------------------*/
 // LINK LISTS Data Sorting Functions & Memory Freeing Functions

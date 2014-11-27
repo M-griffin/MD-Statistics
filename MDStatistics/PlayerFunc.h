@@ -24,11 +24,11 @@ using namespace std;            // Standard C++ Namespace
 
 
 /*--------------------------------------------------------------------------------*/
-// GLOBALS 
+// GLOBALS
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
-// Link list for Faster Player Purging 
+// Link list for Faster Player Purging
 //struct ListItem14 *List14 = 0;
 
 /*--------------------------------------------------------------------------------*/
@@ -37,7 +37,7 @@ using namespace std;            // Standard C++ Namespace
 
 /*--------------------------------------------------------------------------------*/
 // Clears Link List and Free's Current Memory
-void clearList14(void);
+void clearList14 ( void );
 
 /*--------------------------------------------------------------------------------*/
 // MAPNAME.IDX FUNCTIONS - Indexing of Player Data
@@ -45,11 +45,11 @@ void clearList14(void);
 
 /*--------------------------------------------------------------------------------*/
 // MAPNAME.IDX Write - Indexes of Each Data file for Faster Searching
-int writepidx(PLAYERRECIDX * player, int idx);
+int writepidx ( PLAYERRECIDX * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // MAPNAME.DAT Reads - Indexes of Each Data file for Faster Searching
-int readpidx(PLAYERRECIDX * player, int idx);
+int readpidx ( PLAYERRECIDX * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // Reads player.dat and gets Total number of Players that have been loaded
@@ -57,11 +57,11 @@ int countpidx();
 
 /*--------------------------------------------------------------------------------*/
 // Find Player record By Matching name - Gets player Index
-int findpidx(char * tplayer);
+int findpidx ( char * tplayer );
 
 /*--------------------------------------------------------------------------------*/
 // Function Check if Name already exists in Player.dat
-bool matchpidx(char * name);
+bool matchpidx ( char * name );
 
 /*--------------------------------------------------------------------------------*/
 // Checks if Player.dat file exists,  if not Creates it
@@ -69,7 +69,7 @@ bool pidxdataexists();
 
 /*--------------------------------------------------------------------------------*/
 // Adds Index
-void addpidx(char * name, int idx);
+void addpidx ( char * name, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // MAPNAME.DAT FUNCTIONS
@@ -77,15 +77,15 @@ void addpidx(char * name, int idx);
 
 /*--------------------------------------------------------------------------------*/
 // MAPNAME.DAT Write - I/O Adds logname to Log File
-int writep(PLAYERREC * player, int idx);
+int writep ( PLAYERREC * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // PLAYERNAME.DAT Reads - I/O Read Any Log by Index Number
-int readp(PLAYERREC * player, int idx);
+int readp ( PLAYERREC * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // Select and Save User Data to Temp file
-void save_player_temp(PLAYERREC * player);
+void save_player_temp ( PLAYERREC * player );
 
 /*--------------------------------------------------------------------------------*/
 // Grabs information form Temp and Puts into Normal.. Then Deletes Temp File
@@ -97,7 +97,7 @@ void delplayer();
 
 /*--------------------------------------------------------------------------------*/
 // Add New Playername to STRUCTURE AND player.dat
-void addplayer(char * name);
+void addplayer ( char * name );
 
 /*--------------------------------------------------------------------------------*/
 // Checks if Player.dat file exists,  if not Creates it
@@ -108,12 +108,12 @@ bool pdataexists();
 /*--------------------------------------------------------------------------------*/
 
 /*--------------------------------------------------------------------------------*/
-// PLAYERRANK.IDX Write 
-int writepridx(PLAYERREC2IDX * player, int idx);
+// PLAYERRANK.IDX Write
+int writepridx ( PLAYERREC2IDX * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 //  PLAYERRANK.IDX Reads - I/O Read Any Log by Index Number
-int readpridx(PLAYERREC2IDX * player, int idx);
+int readpridx ( PLAYERREC2IDX * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // Reads player.dat and gets Total number of Players that have been loaded
@@ -121,11 +121,11 @@ int countpridx();
 
 /*--------------------------------------------------------------------------------*/
 // Find Player record By Matching name - Gets player Index
-int findpridx(char * tplayer);
+int findpridx ( char * tplayer );
 
 /*--------------------------------------------------------------------------------*/
 // Function Check if Name already exists in Player.dat
-bool matchpridx(char * name);
+bool matchpridx ( char * name );
 
 /*--------------------------------------------------------------------------------*/
 // Checks if PlayerRank.idx file exists,  if not Creates it
@@ -133,7 +133,7 @@ bool pridxdataexists();
 
 /*--------------------------------------------------------------------------------*/
 // Adds Index
-void addpridx(char * name, int idx);
+void addpridx ( char * name, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // PLAYERRANK.DAT FUNCTIONS Contains totals from all map files for overall stats
@@ -142,11 +142,11 @@ void addpridx(char * name, int idx);
 
 /*--------------------------------------------------------------------------------*/
 // PLAYER.DAT Write - I/O Adds logname to Log File
-int writeprank(PLAYERREC2 * player, int idx);
+int writeprank ( PLAYERREC2 * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // PLAYER.DAT Reads - I/O Read Any Log by Index Number
-int readprank(PLAYERREC2 * player, int idx);
+int readprank ( PLAYERREC2 * player, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // Checks if PlayerRank.dat file exists,  if not Creates it

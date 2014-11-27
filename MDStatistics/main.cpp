@@ -79,7 +79,7 @@
            Program function to use these next... Completed Weapon Link List for Sorting
            Weapons by Kills.
          - Started Neck Read & CheckHTMLplayer Functions / Need to Finish New Template also.
-        -- Completed New Player And Weapon Sorting HTML... phewwwwwwww....
+         - Completed New Player And Weapon Sorting HTML... phewwwwwwww....
 05/05/02 - Completed Build 3, Starting on Build 4...
 05/06/02 - Converted Player Processing from Read each time from disk, to Read one time into
            Link Lists then cycle through processing..  Hopefully a little faster... =)
@@ -158,7 +158,7 @@
 07/12/02 - Setup Map Structures and new Config.dat Structure to Hold Current Map for Next Log Parsing run
          - Have Globals set for Map. now just have to setup Players Stats to Maps and Save to Map Data file
 07/14/02 - Finished udateing and spliting log parsing into Seperate dat's for each map.
-            Next just need to sorta it and output.. and creat new HTML for maps..
+           Next just need to sorta it and output.. and creat new HTML for maps..
          - Moved All Data Files to a [Data] Directory for clearner program layout
 07/16/02 - Breaking up Source, Adding New Stats.Cpp and Maps.Cpp for Extra Processing
 07/18/02 - Fixed Problem in Data files.. Needed to 0 out variables before saving or
@@ -171,7 +171,7 @@
          - Fixed up config file and Tamplate to hold Server/Admin Names Ip and Web Addreses.. etc.
          - Need to Fix Bug, IMI DESERT EAGLE 2 times in Player Weapon Rankings. =(
 07/20/02 - Added New Console.cpp and Console.h for New Console Functino to Change Text Color,
-            Cursor Position for a Better User Interface.. =)
+           Cursor Position for a Better User Interface.. =)
 07/21/02 - Finished New Inferface.. Looks Great, will add Percentage later...
          - Finished Fixing up All Templates and Weapon HTML Files Build .87
 08/07/02 - Working on Percentage Complete for each process..
@@ -209,14 +209,14 @@
            So don't have to convert to Char Arrays anymore!! :))
 
 11/27/02 - Making some minor Code Optimizations and Cleaning up the comments!
-          - EXE Optimized 17k by removing all = 0's to Memset(Struct) for Big Functions!
-          - Build 93
+         - EXE Optimized 17k by removing all = 0's to Memset(Struct) for Big Functions!
+         - Build 93
 
 11/28/02 - Reworking for new Temples of Player Rankings
-          - Build 94
+         - Build 94
 
 11/29/02 - Added Sleep()'s to help kill off the constant 100% CPU useage,  will add
-              a variable to the confile to set the delay manually for people who aren't
+           a variable to the confile to set the delay manually for people who aren't
            worried about cpu usage.. ;) Build 95
          - A bite more of code cleaning up.  Weeeeeeeeeeeeeeeeeeee
 
@@ -229,10 +229,10 @@
 
 01/09/03 - Complete Full Ports of Windows and Linux with same source code. Phewwwwwww
          - Will rework GUI later for ansi in both windows and linux, Starting to work
-              on new map code. Sleep()'s only done in Linux at the moment
+           on new map code. Sleep()'s only done in Linux at the moment
 
 01/10/03 - Adding new Windows Console Functions and handling, Wincon.cpp, a seperate one
-              will be created for linux's console output as well.
+           will be created for linux's console output as well.
 
 01/22/03 - Cleaning up some Functions and getting ready for map processing.
 
@@ -244,20 +244,20 @@
          - Code Cleanup and Removed a few functions that were not being used anymore.
 
 01/25/03 - Reworking Parsing of Log Data, Removing extra function work and breaking off
-              The String parsing to update the user data directly / faster!
+           The String parsing to update the user data directly / faster!
          - Finished Rewritting the reparsing, optimized about 2k of exe and it's a lot
            more workable now.
 
 01/30/03 - Fixed bugs in parsing code that wasn't registering damage received.
-          - Also re-write of the purging code for players,  now purges correctly
-              only players with freshmeat and players with 0 kills on a map.
+         - Also re-write of the purging code for players,  now purges correctly
+           only players with freshmeat and players with 0 kills on a map.
          - Added extra GUI clearing functions... Clear All, Clear all Right / Left
 
 01/31/03 - Reworking Player Rankings with new Tamplates, Also Multiple index.html
-              For Rankings per Statistics.
+           For Rankings per Statistics.
 
 02/01/03 - Reworked Temp dat functions.  Instead of Writtting to Temp file and then
-              Renaming temp.  All data is copied to Link List. then Saved to remove
+           Renaming temp.  All data is copied to Link List. then Saved to remove
            Unnessary Processing.
 
 02/04/03 - Finished NEW GUI for all processes.  Need a little tweaking but all the
@@ -300,35 +300,35 @@
 #include "wincon.h"
 #endif
 
-#include "ansi.h"        // Ansi Parser for GUI
-#include "structs.h"            // Loads all Globals
-#include "config.h"             // Load Config File
-#include "Mapfunc.h"        // Map Function / Not Completed Yet!
-#include "LogFunc.h"            // Loads LOG.DAT File i/o
-#include "PlayerFunc.h"         // Loads PLAYER.DAT File i/o
-#include "WeaponFunc.h"         // Loads WEAPON.DAT File i/o
-#include "FA26.h"               // Firearms Log File Parsing Functions
-#include "Stats.h"              // Statistics Calculations
-#include "Html1.h"              // Player Ranks and Player Weapons
-#include "Html2.h"              // Indivual Weapon And Weapon Ranking HTML Creation
+#include "ansi.h"             // Ansi Parser for GUI
+#include "structs.h"          // Loads all Globals
+#include "config.h"           // Load Config File
+#include "Mapfunc.h"          // Map Function / Not Completed Yet!
+#include "LogFunc.h"          // Loads LOG.DAT File i/o
+#include "PlayerFunc.h"       // Loads PLAYER.DAT File i/o
+#include "WeaponFunc.h"       // Loads WEAPON.DAT File i/o
+#include "FA26.h"             // Firearms Log File Parsing Functions
+#include "Stats.h"            // Statistics Calculations
+#include "Html1.h"            // Player Ranks and Player Weapons
+#include "Html2.h"            // Indivual Weapon And Weapon Ranking HTML Creation
 
-using namespace std;            // Standard C++ Namespace
+using namespace std;          // Standard C++ Namespace
 
 /*--------------------------------------------------------------------------------*/
 // Globals - Extern in Structs.h
 /*--------------------------------------------------------------------------------*/
 
-char     PATH[255];        // Global Path
-long     MAXRANK = 0;        // Max # of Players in Player Rankings
-long     MAXWEAPONRANK = 0;     // Max # of Players in Weapon Rankings
-char     LOGPATH[255];         // Log File Path
-char     HTMLPATH[255];        // HTML Output Path
+char     PATH[255];           // Global Path
+long     MAXRANK = 0;         // Max # of Players in Player Rankings
+long     MAXWEAPONRANK = 0;   // Max # of Players in Weapon Rankings
+char     LOGPATH[255];        // Log File Path
+char     HTMLPATH[255];       // HTML Output Path
 
-char     szDateFormat[128];    // System Date
-char     szTimeFormat[128];    // System Time
+char     szDateFormat[128];   // System Date
+char     szTimeFormat[128];   // System Time
 char     MAPNAME[30];         // Current Map
-char     NEWMAP[30];         // Test for New Map
-char     CURRMAP[30];          // Current Map (During Processing)
+char     NEWMAP[30];          // Test for New Map
+char     CURRMAP[30];         // Current Map (During Processing)
 bool     TEAM = true;         // 0 true = Red / 1 False = Blue
 
 
@@ -339,78 +339,84 @@ bool     TEAM = true;         // 0 true = Red / 1 False = Blue
 
 /*--------------------------------------------------------------------------------*/
 // Program Initalization
-void program_init() {
+void program_init()
+{
 
     CONFIG cfg;   // Handle to Current Map Name
 
     // Do Error Checking if CONFIG.CFG File exists, if not creates it
-    if(configdataexists() == false) createconfig(); // Creates Config with Default Settings
+    if ( configdataexists() == false ) createconfig(); // Creates Config with Default Settings
 
     // Open and Read Config file
     parseconfig();
 
     // Check if Log Path was set, of not use Default!
-    if (strcmp(LOGPATH, "NONE") == 0 ) strcpy(LOGPATH,PATH);
+    if ( strcmp ( LOGPATH, "NONE" ) == 0 ) strcpy ( LOGPATH,PATH );
 
     // Check if HTML Path was set, of not use Default!
-    if (strcmp(HTMLPATH, "NONE") == 0) strcpy(HTMLPATH,PATH);
+    if ( strcmp ( HTMLPATH, "NONE" ) == 0 ) strcpy ( HTMLPATH,PATH );
 
     // Create Config.dat
-    if(cfgdataexists() == false) {
+    if ( cfgdataexists() == false )
+    {
         char text1[40] = "Can't Create config.dat! ";
-        drawleft(text1,12,0);
-        #ifdef _WIN32
-        system("pause");
-        #endif
-        exit(1);   // Exit Program if Error Occurs
+        drawleft ( text1,12,0 );
+#ifdef _WIN32
+        system ( "pause" );
+#endif
+        exit ( 1 ); // Exit Program if Error Occurs
     }
 
-    if (countcfg() == 0) strcpy(MAPNAME, "unknown");
-    else {
-        readcfg(&cfg,0);
-        strcpy(MAPNAME,cfg.currmap);
+    if ( countcfg() == 0 ) strcpy ( MAPNAME, "unknown" );
+    else
+    {
+        readcfg ( &cfg,0 );
+        strcpy ( MAPNAME,cfg.currmap );
     }
 
     // Setup Log Parsing
-    strcpy(NEWMAP,MAPNAME);
+    strcpy ( NEWMAP,MAPNAME );
 
     // Do Error Checking if Log.dat File exists, if not creates it
-    if(dataexists() == false) {
+    if ( dataexists() == false )
+    {
         char text1[40] = "Can't Create log.dat! ";
-        drawleft(text1,12,0);
-        #ifdef _WIN32
-        system("pause");
-        #endif
-        exit(1);   // Exit Program if Error Occurs
-    }
-
-        // Do Error Checking if Weapon.dat File exists, if not creates it
-    if(wdataexists() == false) {
-        char text1[40] = "Can't Create Weapon.dat! ";
-        drawleft(text1,12,0);
-        #ifdef _WIN32
-        system("pause");
-        #endif
-        exit(1);   // Exit Program if Error Occurs
+        drawleft ( text1,12,0 );
+#ifdef _WIN32
+        system ( "pause" );
+#endif
+        exit ( 1 ); // Exit Program if Error Occurs
     }
 
     // Do Error Checking if Weapon.dat File exists, if not creates it
-    if(mdataexists() == false) {
-        char text1[40] = "Can't Create Map.dat! ";
-        drawleft(text1,12,0);
-        #ifdef _WIN32
-        system("pause");
-        #endif
-        exit(1);   // Exit Program if Error Occurs
+    if ( wdataexists() == false )
+    {
+        char text1[40] = "Can't Create Weapon.dat! ";
+        drawleft ( text1,12,0 );
+#ifdef _WIN32
+        system ( "pause" );
+#endif
+        exit ( 1 ); // Exit Program if Error Occurs
     }
 
-    #ifdef _WIN32
+    // Do Error Checking if Weapon.dat File exists, if not creates it
+    if ( mdataexists() == false )
+    {
+        char text1[40] = "Can't Create Map.dat! ";
+        drawleft ( text1,12,0 );
+#ifdef _WIN32
+        system ( "pause" );
+#endif
+        exit ( 1 ); // Exit Program if Error Occurs
+    }
+
+#ifdef _WIN32
     // Display Program GUI
     char gui[255];
-    sprintf (gui,"%sGUI.ANS",PATH);
-    system("cls");
-    ansiparse( gui );
-    #endif
+    sprintf ( gui,"%sGUI.ANS",PATH );
+    system ( "cls" );
+    ansiparse ( gui );
+#endif
     return;
 }
 
@@ -418,70 +424,76 @@ void program_init() {
 
 /*--------------------------------------------------------------------------------*/
 // Main - Testing of All Functions
-int main(int argc, char *argv[]) {
+int main ( int argc, char *argv[] )
+{
 
     // Setup Global Path in Structs.h
     char arg[255];
-      strcpy(arg,argv[0]);
+    strcpy ( arg,argv[0] );
     int num;
 
-    #ifdef _WIN32
+#ifdef _WIN32
     // Get And Set Program Path
-    memset(&PATH,0,255);
-    for (int i = 0; ;i++) { // Count for Romoval of ExeName with Path
-        if (arg[i] == '\0') break;
-        if (arg[i] == '\\') num = i;
+    memset ( &PATH,0,255 );
+    for ( int i = 0; ; i++ ) // Count for Romoval of ExeName with Path
+    {
+        if ( arg[i] == '\0' ) break;
+        if ( arg[i] == '\\' ) num = i;
     }
-    for (int i = 0; i < num+1 ; i++) {
+    for ( int i = 0; i < num+1 ; i++ )
+    {
         PATH[i] = arg[i];
     }
-     SetCurrentDirectory(PATH);
-    #else
+    SetCurrentDirectory ( PATH );
+#else
     // Get And Set Program Path
-    memset(&PATH,0,255);
-    for (int i = 0; ;i++) { // Count for Romoval of ExeName with Path
-        if (arg[i] == '\0') break;
-        if (arg[i] == '/') num = i;
+    memset ( &PATH,0,255 );
+    for ( int i = 0; ; i++ ) // Count for Romoval of ExeName with Path
+    {
+        if ( arg[i] == '\0' ) break;
+        if ( arg[i] == '/' ) num = i;
     }
-    for (int i = 0; i < num+1 ; i++) {
+    for ( int i = 0; i < num+1 ; i++ )
+    {
         PATH[i] = arg[i];
     }
-    #endif
+#endif
 
     program_init(); // Initalize all setup proceedures
 
-    #ifdef _WIN32
-    GetTimeFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
-    GetDateFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szDateFormat, 50 );
-    SetConsoleTitle(" .mD.Statistics For Firearms Mod v2.6 [Alpha] Release - Webpage Statistics");
+#ifdef _WIN32
+    GetTimeFormat ( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
+    GetDateFormat ( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szDateFormat, 50 );
+    SetConsoleTitle ( " .mD.Statistics For Firearms Mod v2.6 [Alpha] Release - Webpage Statistics" );
     //system("GUI.COM"); // Kick off GUI Interface...
-       #else
-       // Add Linux Time here.. Still missing from Linux Port.
-    system("clear");
+#else
+    // Add Linux Time here.. Still missing from Linux Port.
+    system ( "clear" );
     //System("cat GUI.ANS");    - Not yet Implimented a GUI for Linux - Text Only!
-    printf("\n+----------------------------------------------------------------+\n");
-    printf("| .mD.Statistics For Firearms Mod v2.6 : [Build 0.1.1.1] 3/02/03 |\n");
-    printf("| (c) 2002-2003 Michael Griffin (Webpage Statistics Generator)   |\n");
-    printf("+----------------------------------------------------------------+\n\n");
-    #endif
+    printf ( "\n+----------------------------------------------------------------+\n" );
+    printf ( "| .mD.Statistics For Firearms Mod v2.6 : [Build 0.1.1.1] 3/02/03 |\n" );
+    printf ( "| (c) 2002-2003 Michael Griffin (Webpage Statistics Generator)   |\n" );
+    printf ( "+----------------------------------------------------------------+\n\n" );
+#endif
 
     // Start Program Operations here, Parsing of Log Files
     dologparsing();
 
-        // Error Checking if any Log files are avial to be read..
-    if (countlogs() == 0) {
+    // Error Checking if any Log files are avial to be read..
+    if ( countlogs() == 0 )
+    {
         char text1[40] = "No log files found! ";
-        drawleft(text1,12,0);
-        #ifdef _WIN32
-        system("pause");
-        #endif
+        drawleft ( text1,12,0 );
+#ifdef _WIN32
+        system ( "pause" );
+#endif
         return 0;
     }
 
     // Handle to Current Map Name
     CONFIG cfg;
-    strcpy(cfg.currmap,NEWMAP);
-    writecfg(&cfg,0);
+    strcpy ( cfg.currmap,NEWMAP );
+    writecfg ( &cfg,0 );
 
     // Kick off rest of program's processes
     delplayer();            // Removes Player's with 0 Kills From Rankings
@@ -495,30 +507,30 @@ int main(int argc, char *argv[]) {
     clearwkillsort();       // Clears Link List for Weapon Sorting And Ranks calcwrank(); =)
     doweaponrankHTML();     // Process for Weapon Rankings Weapon.HTML
 
-       string tpath = PATH;
+    string tpath = PATH;
 
     clearall();
 
-    #ifdef _WIN32
+#ifdef _WIN32
     char text2[40];
-    sprintf(text2,"Started: [%s]",szTimeFormat );
-    drawleft(text2,3,0);
+    sprintf ( text2,"Started: [%s]",szTimeFormat );
+    drawleft ( text2,3,0 );
 
-    GetTimeFormat( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
+    GetTimeFormat ( LOCALE_SYSTEM_DEFAULT, 0, NULL, NULL, szTimeFormat, 50 );
     char text4[40];
-    sprintf(text2,"Ended:   [%s]\n\n",szTimeFormat );
-    drawleft2(text2,3,0);
-    system("pause");
-        string temp0 = tpath+"Data\\playerrank.dat";
-      string temp1 = tpath+"Data\\playerrank.idx";
-       #else
+    sprintf ( text2,"Ended:   [%s]\n\n",szTimeFormat );
+    drawleft2 ( text2,3,0 );
+    system ( "pause" );
+    string temp0 = tpath+"Data\\playerrank.dat";
+    string temp1 = tpath+"Data\\playerrank.idx";
+#else
     string temp0 = tpath+"Data/playerrank.dat";
-      string temp1 = tpath+"Data/playerrank.idx";
-      #endif
+    string temp1 = tpath+"Data/playerrank.idx";
+#endif
 
     // Removes Playerrank files for refresh.
-    remove(temp0.c_str());
-    remove(temp1.c_str());
+    remove ( temp0.c_str() );
+    remove ( temp1.c_str() );
     return 0;
 }
 /*--------------------------------------------------------------------------------*/

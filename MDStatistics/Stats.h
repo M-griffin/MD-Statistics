@@ -24,9 +24,9 @@ using namespace std;              // Standard C++ Namespace
 // GLOBALS - Link List's For Data Contianers
 /*--------------------------------------------------------------------------------*/
 /*
-struct ListItem12 *MyList12 = 0 ; // Holds Player Ranks .dat Data            PLAYERREC
+struct ListItem12 *MyList12 = 0 ; // Holds Player Ranks .dat Data                         PLAYERREC
 struct ListItem14 *MyList14 = 0 ; // Holding All Player Data while Creating HTML Files    PLAYERREC
-struct ListItem15 *MyList15 = 0 ; // Holding all Weapon Data While Calculating Stats    WEAPONREC
+struct ListItem15 *MyList15 = 0 ; // Holding all Weapon Data While Calculating Stats      WEAPONREC
 
 /*--------------------------------------------------------------------------------*/
 // LINK LISTS Data Sorting Functions & Memory Freeing Functions
@@ -51,12 +51,12 @@ void clearplayerrank();
 /*--------------------------------------------------------------------------------*/
 // This Function Holds All Player Data While Creating HTML Files
 // Contains no Sorting of Player Records
-void playerdatacontainer(PLAYERREC * player);
+void playerdatacontainer ( PLAYERREC * player );
 
 /*--------------------------------------------------------------------------------*/
 // This Function Holds All Weapon Data While Creating HTML Files
 // Contains no Data Sorting
-void weapondatacont(WEAPONREC * weapon);
+void weapondatacont ( WEAPONREC * weapon );
 
 /*--------------------------------------------------------------------------------*/
 // Sorting Functions for Rankings & Calculating Statistics
@@ -64,11 +64,11 @@ void weapondatacont(WEAPONREC * weapon);
 
 /*--------------------------------------------------------------------------------*/
 // This Function Updates Players Statsics in the Link List
-void addplayermapstats(PLAYERREC * player);
+void addplayermapstats ( PLAYERREC * player );
 
 /*--------------------------------------------------------------------------------*/
 // This Function Add New Players to the Link List #13 for Log Parsing
-bool newmapdata(string name);
+bool newmapdata ( string name );
 
 /*--------------------------------------------------------------------------------*/
 // This Function Copy's All Player Data From Link List to Player.dat
@@ -77,17 +77,17 @@ void copyrankdata();
 /*--------------------------------------------------------------------------------*/
 // Link List for Sorting By Player's Kills
 // Sorts Players in Index.HTML
-void killsort(PLAYERREC * player);
+void killsort ( PLAYERREC * player );
 
 /*--------------------------------------------------------------------------------*/
 // Link List For Sorting PlayerRank.dat Players by Kills
 // Sorts Players in Index.HTML
-void rankkillsort(PLAYERREC2 * player);
+void rankkillsort ( PLAYERREC2 * player );
 
 /*--------------------------------------------------------------------------------*/
 // Link List For Sorting PlayerRank.dat Players by Kills
 // Sorts Players in Index.HTML
-void rankkillsort2(PLAYERREC2 * player);
+void rankkillsort2 ( PLAYERREC2 * player );
 
 /*--------------------------------------------------------------------------------*/
 /*// Container For holding Playerrank.dat Player's
@@ -101,24 +101,24 @@ void playerlist3();
 
 /*--------------------------------------------------------------------------------*/
 // Computes Weapons KILL DEATH+SUICIDE RADIO
-long GreatestCommonDivisor(long alpha, // Kills
-                           long beta); // Deaths
+long GreatestCommonDivisor ( long alpha, // Kills
+                             long beta ); // Deaths
 
 /*--------------------------------------------------------------------------------*/
 // definition of Simplify() Converts fractions to it simpliest form
-string simplify(long myNumerator,   // Player / Weapon Kills
-                long myDenominator);// Player / Weapon Deaths
+string simplify ( long myNumerator, // Player / Weapon Kills
+                  long myDenominator ); // Player / Weapon Deaths
 
 /*--------------------------------------------------------------------------------*/
 // Computes Weapons KILL DEATH SUICIDE PERCENTAGE
-double compstatspercent(long double wk,  // Weapon Kills     // Player Kills
-                        long double wd,  // Weapon Deaths    // Player Deaths
-                        long double ws); // Weapon sui  // Player sui
+double compstatspercent ( long double wk, // Weapon Kills     // Player Kills
+                          long double wd,  // Weapon Deaths    // Player Deaths
+                          long double ws ); // Weapon sui  // Player sui
 
 /*--------------------------------------------------------------------------------*/
 // Computes Weapons KILL Out of Total players Kills Percentage
-double compwkillpercent(long double wk,  // Weapon Kills
-                        long double pk); // Player Kills
+double compwkillpercent ( long double wk, // Weapon Kills
+                          long double pk ); // Player Kills
 
 /*--------------------------------------------------------------------------------*/
 // Computes Players & Weapons KILL DEATH SUICIDE PERCENTAGE And Assigns to Players Rec

@@ -21,130 +21,141 @@ static int __FOREGROUND = 7;
 
 /*--------------------------------------------------------------------------------*/
 // Function for Printing out to the screen
-void setcolor (int fg, int bg) {
+void setcolor ( int fg, int bg )
+{
 
     int _attr;
-     color(fg);   // Set Foreground
+    color ( fg ); // Set Foreground
 
-      if (fg > 15) _attr = 1;
-     else _attr = 0;
-     SetConsoleTextAttribute (GetStdHandle(STD_OUTPUT_HANDLE), _attr);
+    if ( fg > 15 ) _attr = 1;
+    else _attr = 0;
+    SetConsoleTextAttribute ( GetStdHandle ( STD_OUTPUT_HANDLE ), _attr );
 
-    bgcolor(bg); // Set Background
+    bgcolor ( bg ); // Set Background
     return;
 }
 //
 // Clears the screen
 //
-void clrscr() {
+void clrscr()
+{
 
     COORD coordScreen = { 0, 0 };
     DWORD cCharsWritten;
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     DWORD dwConSize;
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE hConsole = GetStdHandle ( STD_OUTPUT_HANDLE );
 
-    GetConsoleScreenBufferInfo(hConsole, &csbi);
+    GetConsoleScreenBufferInfo ( hConsole, &csbi );
     dwConSize = csbi.dwSize.X * csbi.dwSize.Y;
     screensize.x = csbi.dwSize.X;
     screensize.y = csbi.dwSize.Y;
-    FillConsoleOutputCharacter(hConsole, TEXT(' '), dwConSize, coordScreen, &cCharsWritten);
-    GetConsoleScreenBufferInfo(hConsole, &csbi);
-    FillConsoleOutputAttribute(hConsole, csbi.wAttributes, dwConSize, coordScreen, &cCharsWritten);
-    SetConsoleCursorPosition(hConsole, coordScreen);
+    FillConsoleOutputCharacter ( hConsole, TEXT ( ' ' ), dwConSize, coordScreen, &cCharsWritten );
+    GetConsoleScreenBufferInfo ( hConsole, &csbi );
+    FillConsoleOutputAttribute ( hConsole, csbi.wAttributes, dwConSize, coordScreen, &cCharsWritten );
+    SetConsoleCursorPosition ( hConsole, coordScreen );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Sets Cursor Position via x,y, coords.
-void gotoxy(int x, int y) {
+void gotoxy ( int x, int y )
+{
 
     COORD point;
-    if((x < 0 || x > screensize.x) || (y < 0 || y > screensize.y))
+    if ( ( x < 0 || x > screensize.x ) || ( y < 0 || y > screensize.y ) )
         return;
-    point.X = (x -1); point.Y = (y -1);  // -1 compisates for Bad Windows API
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = ( x -1 );
+    point.Y = ( y -1 ); // -1 compisates for Bad Windows API
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Delete Line
-void delline() {
+void delline()
+{
 
     COORD coord;
     DWORD written;
     CONSOLE_SCREEN_BUFFER_INFO info;
 
-    GetConsoleScreenBufferInfo (GetStdHandle (STD_OUTPUT_HANDLE),
-      &info);
+    GetConsoleScreenBufferInfo ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                                 &info );
     coord.X = info.dwCursorPosition.X;
     coord.Y = info.dwCursorPosition.Y;
 
-    FillConsoleOutputCharacter (GetStdHandle (STD_OUTPUT_HANDLE),
-      ' ', info.dwSize.X * info.dwCursorPosition.Y, coord, &written);
-    gotoxy (info.dwCursorPosition.X + 1,
-    info.dwCursorPosition.Y + 1);
+    FillConsoleOutputCharacter ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                                 ' ', info.dwSize.X * info.dwCursorPosition.Y, coord, &written );
+    gotoxy ( info.dwCursorPosition.X + 1,
+             info.dwCursorPosition.Y + 1 );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clear to End of Line
-void clreol () {
+void clreol ()
+{
 
     COORD coord;
     DWORD written;
     CONSOLE_SCREEN_BUFFER_INFO info;
 
-    GetConsoleScreenBufferInfo (GetStdHandle (STD_OUTPUT_HANDLE),
-      &info);
+    GetConsoleScreenBufferInfo ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                                 &info );
     coord.X = info.dwCursorPosition.X;
     coord.Y = info.dwCursorPosition.Y;
 
-    FillConsoleOutputCharacter (GetStdHandle (STD_OUTPUT_HANDLE),
-      ' ', info.dwSize.X - info.dwCursorPosition.X, coord, &written);
-    gotoxy (coord.X, coord.Y);
+    FillConsoleOutputCharacter ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                                 ' ', info.dwSize.X - info.dwCursorPosition.X, coord, &written );
+    gotoxy ( coord.X, coord.Y );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Where X
-int wherex() {
+int wherex()
+{
 
     CONSOLE_SCREEN_BUFFER_INFO info;
 
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
+    GetConsoleScreenBufferInfo ( GetStdHandle ( STD_OUTPUT_HANDLE ), &info );
     return info.dwCursorPosition.X + 1;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Where Y
-int wherey() {
+int wherey()
+{
 
     CONSOLE_SCREEN_BUFFER_INFO info;
 
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &info);
+    GetConsoleScreenBufferInfo ( GetStdHandle ( STD_OUTPUT_HANDLE ), &info );
     return info.dwCursorPosition.Y + 1;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Background Color
-void bgcolor (int color) {
+void bgcolor ( int color )
+{
 
     __BACKGROUND = color;
-    SetConsoleTextAttribute (GetStdHandle (STD_OUTPUT_HANDLE),
-      __FOREGROUND + (color << 4));
+    SetConsoleTextAttribute ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                              __FOREGROUND + ( color << 4 ) );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Foreground Color
-void color (int color) {
+void color ( int color )
+{
 
     __FOREGROUND = color;
-    SetConsoleTextAttribute (GetStdHandle (STD_OUTPUT_HANDLE),
-      color + (__BACKGROUND << 4));
+    SetConsoleTextAttribute ( GetStdHandle ( STD_OUTPUT_HANDLE ),
+                              color + ( __BACKGROUND << 4 ) );
 }
 
 /*--------------------------------------------------------------------------------*/
 // Text Attribute
-void textattr (int _attr) {
+void textattr ( int _attr )
+{
 
-    SetConsoleTextAttribute (GetStdHandle(STD_OUTPUT_HANDLE), _attr);
+    SetConsoleTextAttribute ( GetStdHandle ( STD_OUTPUT_HANDLE ), _attr );
 }
 
 
@@ -154,198 +165,220 @@ void textattr (int _attr) {
 
 /*--------------------------------------------------------------------------------*/
 // Main Title Portion for text in GUI
-void drawtop(char * text, int fc, int bc, int x) {
+void drawtop ( char * text, int fc, int bc, int x )
+{
 
     COORD point;
 
-     color(fc);
-    bgcolor(bc);
+    color ( fc );
+    bgcolor ( bc );
 
-    point.X = x; point.Y = 8;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = x;
+    point.Y = 8;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << text;
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Bottom Left Box for text in GUI
-void drawleft(char * text, int fc, int bc) {
+void drawleft ( char * text, int fc, int bc )
+{
 
     COORD point;
 
-    color(fc);
-    bgcolor(bc);
+    color ( fc );
+    bgcolor ( bc );
 
-    point.X = 15; point.Y = 14;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 14;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << text;
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Bottom Left Box for text in GUI
-void drawleft2(char * text, int fc, int bc) {
+void drawleft2 ( char * text, int fc, int bc )
+{
 
     COORD point;
 
-    color(fc);
-    bgcolor(bc);
+    color ( fc );
+    bgcolor ( bc );
 
-    point.X = 15; point.Y = 16;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 16;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << text;
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Main Title Portion for text in GUI
-void cleartop() {
+void cleartop()
+{
 
     COORD point;
 
-     color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 13; point.Y = 8;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 13;
+    point.Y = 8;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                                                    ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clears Bottom Left Box for text in GUI
-void clearleft() {
+void clearleft()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 15; point.Y = 14;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 14;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                       ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clears Bottom Left Box for text in GUI
-void clearleft2() {
+void clearleft2()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 15; point.Y = 16;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 16;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                       ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Bottom Left Box for text in GUI
-void drawright(char * text, int fc, int bc) {
+void drawright ( char * text, int fc, int bc )
+{
 
     COORD point;
 
-    color(fc);
-    bgcolor(bc);
+    color ( fc );
+    bgcolor ( bc );
 
-    point.X = 43; point.Y = 14;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 14;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-     cout << text;
-    color(7);
-    bgcolor(0);
+    cout << text;
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Bottom Left Box for text in GUI
-void drawright2(char * text, int fc, int bc) {
+void drawright2 ( char * text, int fc, int bc )
+{
 
     COORD point;
 
-    color(fc);
-    bgcolor(bc);
+    color ( fc );
+    bgcolor ( bc );
 
-    point.X = 43; point.Y = 16;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 16;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-     cout << text;
-    color(7);
-    bgcolor(0);
+    cout << text;
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clears Bottom Left Box for text in GUI
-void clearright() {
+void clearright()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 43; point.Y = 14;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 14;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-     cout << "                       ";
-    color(7);
-    bgcolor(0);
+    cout << "                       ";
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clears Bottom Left Box for text in GUI
-void clearright2() {
+void clearright2()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 43; point.Y = 16;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 16;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-     cout << "                       ";
-    color(7);
-    bgcolor(0);
+    cout << "                       ";
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Top Percentage Bar
-void percenttop(long double percentage) {
+void percenttop ( long double percentage )
+{
 
     COORD point;
 
-    color(13);
-    bgcolor(5);
+    color ( 13 );
+    bgcolor ( 5 );
 
-    point.X = 29; point.Y = 6;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 29;
+    point.Y = 6;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-    char per1[21]={0};
-    char per2[21]={0};
+    char per1[21]= {0};
+    char per2[21]= {0};
 
     per2[0] = 176;
     per2[1] = 177;
@@ -366,102 +399,115 @@ void percenttop(long double percentage) {
     per2[16] = 177;
     per2[17] = 178;
     per2[18] = 176;
-          per2[19] = 177;
+    per2[19] = 177;
 
-    if( percentage < 10 ) {
-        sprintf(per1, "%c" ,per2[0]);
+    if ( percentage < 10 )
+    {
+        sprintf ( per1, "%c" ,per2[0] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if( percentage < 20 ) {
-        sprintf(per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3]);
+    }
+    else if ( percentage < 20 )
+    {
+        sprintf ( per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 30) {
-        sprintf(per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5]);
+    }
+    else if ( percentage < 30 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 40) {
-        sprintf(per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6]);
+    }
+    else if ( percentage < 40 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 50) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9]);
+    }
+    else if ( percentage < 50 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 60) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11]);
+    }
+    else if ( percentage < 60 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 70) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13]);
+    }
+    else if ( percentage < 70 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 80) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15]);
+    }
+    else if ( percentage < 80 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 90) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17]);
+    }
+    else if ( percentage < 90 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-      else if(percentage < 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18]);
+    }
+    else if ( percentage < 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage = 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19]);
+    }
+    else if ( percentage = 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     return;
+    }
+    return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Left Percentage Bar
-void percentleft(long double percentage) {
+void percentleft ( long double percentage )
+{
 
     COORD point;
 
-     point.X = 15; point.Y = 12;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 12;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-    color(13);
-    bgcolor(5);
+    color ( 13 );
+    bgcolor ( 5 );
 
-    char per1[21]={0};
-    char per2[21]={0};
+    char per1[21]= {0};
+    char per2[21]= {0};
 
     per2[0] = 176;
     per2[1] = 177;
@@ -484,100 +530,113 @@ void percentleft(long double percentage) {
     per2[18] = 176;
     per2[19] = 177;
 
-    if( percentage < 10 ) {
-        sprintf(per1, "%c" ,per2[0]);
+    if ( percentage < 10 )
+    {
+        sprintf ( per1, "%c" ,per2[0] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if( percentage < 20 ) {
-        sprintf(per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3]);
+    }
+    else if ( percentage < 20 )
+    {
+        sprintf ( per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 30) {
-        sprintf(per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5]);
+    }
+    else if ( percentage < 30 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 40) {
-        sprintf(per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6]);
+    }
+    else if ( percentage < 40 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 50) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9]);
+    }
+    else if ( percentage < 50 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 60) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11]);
+    }
+    else if ( percentage < 60 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 70) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13]);
+    }
+    else if ( percentage < 70 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 80) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15]);
+    }
+    else if ( percentage < 80 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 90) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17]);
+    }
+    else if ( percentage < 90 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18]);
+    }
+    else if ( percentage < 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage = 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19]);
+    }
+    else if ( percentage = 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     return;
+    }
+    return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Right Percentage Bar
-void percentright(long double percentage) {
+void percentright ( long double percentage )
+{
 
     COORD point;
 
-    color(13);
-    bgcolor(5);
+    color ( 13 );
+    bgcolor ( 5 );
 
-    point.X = 43; point.Y = 12;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 12;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
-    char per1[21]={0};
-    char per2[21]={0};
+    char per1[21]= {0};
+    char per2[21]= {0};
 
     per2[0] = 176;
     per2[1] = 177;
@@ -600,145 +659,163 @@ void percentright(long double percentage) {
     per2[18] = 176;
     per2[19] = 177;
 
-    if( percentage < 10 ) {
-        sprintf(per1, "%c" ,per2[0]);
+    if ( percentage < 10 )
+    {
+        sprintf ( per1, "%c" ,per2[0] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if( percentage < 20 ) {
-        sprintf(per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3]);
+    }
+    else if ( percentage < 20 )
+    {
+        sprintf ( per1,"%c%c%c%c",per2[0],per2[1],per2[2],per2[3] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 30) {
-        sprintf(per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5]);
+    }
+    else if ( percentage < 30 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 40) {
-        sprintf(per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6]);
+    }
+    else if ( percentage < 40 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 50) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9]);
+    }
+    else if ( percentage < 50 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 60) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11]);
+    }
+    else if ( percentage < 60 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 70) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13]);
+    }
+    else if ( percentage < 70 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 80) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15]);
+    }
+    else if ( percentage < 80 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 90) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17]);
+    }
+    else if ( percentage < 90 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage < 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18]);
+    }
+    else if ( percentage < 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     else if(percentage = 100) {
-        sprintf(per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19]);
+    }
+    else if ( percentage = 100 )
+    {
+        sprintf ( per1,"%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c",per2[0],per2[1],per2[2],per2[3],per2[4],per2[5],per2[6],per2[7],per2[8],per2[9],per2[10],per2[11],per2[12],per2[13],per2[14],per2[15],per2[16],per2[17],per2[18],per2[19] );
         cout << per1;
-        color(7);
-        bgcolor(0);
+        color ( 7 );
+        bgcolor ( 0 );
         return;
-     }
-     return;
+    }
+    return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clear Top Percentage Bar
-void clearpercenttop() {
+void clearpercenttop()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 29; point.Y = 6;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 29;
+    point.Y = 6;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                    ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clear Left Percentage Bar
-void clearpercentleft() {
+void clearpercentleft()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 15; point.Y = 12;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 15;
+    point.Y = 12;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                    ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clear Right Percentage Bar
-void clearpercentright() {
+void clearpercentright()
+{
 
     COORD point;
 
-    color(0);
-    bgcolor(0);
+    color ( 0 );
+    bgcolor ( 0 );
 
-    point.X = 43; point.Y = 12;
-    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), point);
+    point.X = 43;
+    point.Y = 12;
+    SetConsoleCursorPosition ( GetStdHandle ( STD_OUTPUT_HANDLE ), point );
 
     cout << "                    ";
-    color(7);
-    bgcolor(0);
+    color ( 7 );
+    bgcolor ( 0 );
     return;
 }
 
 /*--------------------------------------------------------------------------------*/
 // Clear All GUI for Full Refresh
-void clearall() {
+void clearall()
+{
 
-     clearpercentleft();
+    clearpercentleft();
     clearleft();
     clearleft2();
 
@@ -752,7 +829,8 @@ void clearall() {
 
 /*--------------------------------------------------------------------------------*/
 // Clear All GUI for Full Refresh
-void clearallleft() {
+void clearallleft()
+{
 
     clearpercentleft();
     clearleft();
@@ -761,11 +839,11 @@ void clearallleft() {
 
 /*--------------------------------------------------------------------------------*/
 // Clear All GUI for Full Refresh
-void clearallright() {
+void clearallright()
+{
 
     clearpercentright();
     clearright();
     clearright2();
 }
 #endif
-

@@ -18,11 +18,11 @@ using namespace std;            // Standard C++ Namespace
 
 /*--------------------------------------------------------------------------------*/
 // WEAPON.DAT Write - I/O Adds logname to Log File
-int writew(WEAPONREC * weapon, int idx);
+int writew ( WEAPONREC * weapon, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // WEAPON.DAT Reads - I/O Read Any Log by Index Number
-int readw(WEAPONREC * weapon, int idx);
+int readw ( WEAPONREC * weapon, int idx );
 
 /*--------------------------------------------------------------------------------*/
 // Reads weapon.dat and gets Total number of Weapons that have been loaded
@@ -34,11 +34,11 @@ void listweapons();
 
 /*--------------------------------------------------------------------------------*/
 // Find Weapon record By Matching name - Gets Weapons Index
-int findweapon(char * tweapon);
+int findweapon ( char * tweapon );
 
 /*--------------------------------------------------------------------------------*/
 // Function Check if Name already exists in Weapon.dat
-bool matchweapon(char * name);
+bool matchweapon ( char * name );
 
 /*--------------------------------------------------------------------------------*/
 // Checks if Weapon.dat file exists,  if not Creates it
@@ -46,7 +46,7 @@ bool wdataexists();
 
 /*--------------------------------------------------------------------------------*/
 // Add New Weaponname to STRUCTURE AND Weapon.dat
-void addweapon(char * name);
+void addweapon ( char * name );
 
 /*--------------------------------------------------------------------------------*/
 // Create Starting Weapon Structures

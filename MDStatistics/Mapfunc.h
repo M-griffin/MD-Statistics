@@ -7,12 +7,12 @@
 
 /*--------------------------------------------------------------------------------*/
 // map.DAT Write - I/O Adds MAPNAMEREC to map File
-int writem(MAPNAMEREC * map, int idx);
+int writem ( MAPNAMEREC * map, int idx );
 
 
 /*--------------------------------------------------------------------------------*/
 // map.DAT Reads - I/O Read Any map by Index Number
-int readm(MAPNAMEREC * map, int idx);
+int readm ( MAPNAMEREC * map, int idx );
 
 
 /*--------------------------------------------------------------------------------*/
@@ -26,12 +26,12 @@ void listmaps();
 
 /*--------------------------------------------------------------------------------*/
 // Find map record By Matching name
-int findmap(char *tmap);
+int findmap ( char *tmap );
 
 
 /*--------------------------------------------------------------------------------*/
 // Function for Seeing if A map has already been loaded before
-bool matchmap(char* name);
+bool matchmap ( char* name );
 
 
 /*--------------------------------------------------------------------------------*/
@@ -39,4 +39,3 @@ bool matchmap(char* name);
 bool mdataexists();
 
 #endif
-
